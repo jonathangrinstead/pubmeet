@@ -1,0 +1,64 @@
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="text-center lg:text-left">
+      <h1 class="text-5xl font-bold">Create a PubMeet</h1>
+      <p class="py-6">Set up a new meet-up and invite your friends for drinks!</p>
+    </div>
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div class="card-body">
+        <%= simple_form_for @meet do |f| %>
+          <div class="form-control">
+            <%= f.input :decision_deadline,
+                        label: "Decision Deadline",
+                        input_html: { class: "input input-bordered" },
+                        hint: "When should the pub location be decided?",
+                        as: :datetime %>
+          </div>
+
+          <div class="form-control">
+            <%= f.input :slug,
+                        label: "Custom URL (optional)",
+                        input_html: { class: "input input-bordered" },
+                        hint: "Leave blank for an auto-generated URL" %>
+          </div>
+
+          <h3 class="text-lg font-semibold mt-4">Your Details</h3>
+
+          <%= simple_fields_for @participant do |p| %>
+            <div class="form-control">
+              <%= p.input :name,
+                          label: "Your Name",
+                          input_html: { class: "input input-bordered" },
+                          required: true %>
+            </div>
+
+            <div class="form-control">
+              <%= p.input :location,
+                          label: "Your Location",
+                          input_html: { class: "input input-bordered" },
+                          hint: "Area or neighborhood you prefer" %>
+            </div>
+
+            <div class="form-control">
+              <%= p.input :vibe,
+                          label: "Preferred Vibe",
+                          collection: ["Cheap and Cheerful", "Classy", "Sports", "Quiet", "Dance", ],
+                          input_html: { class: "select select-bordered w-full" } %>
+            </div>
+
+            <div class="form-control">
+              <%= p.input :phone_number,
+                          label: "Phone Number (optional)",
+                          input_html: { class: "input input-bordered" },
+                          hint: "For SMS notifications" %>
+            </div>
+          <% end %>
+
+          <div class="form-control mt-6">
+            <%= f.button :submit, "Create PubMeet", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
