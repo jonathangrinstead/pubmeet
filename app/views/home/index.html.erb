@@ -1,0 +1,182 @@
+<% content_for :title, "PubMeet - Find Fair Pub Meetups for Everyone! 🍻" %>
+
+<div class="flex flex-col items-center justify-center bg-base-100 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl w-full mx-auto pt-10 pb-20">
+    <!-- Hero Section -->
+    <section class="card bg-base-100 shadow-xl mb-10">
+      <div class="card-body text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">PubMeet 🍻</h1>
+        <p class="text-xl mb-6">Find the fairest pub for everyone to meet at!</p>
+        <p class="mb-6">No more arguments about where to meet. PubMeet finds the perfect pub based on everyone's location, so it's fair for the whole group!</p>
+        <div class="card-actions justify-center">
+          <a href="/rooms/new" class="btn btn-primary btn-lg text-lg gap-2">
+            🍻 Find a Pub Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="mb-16">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-2">How It Works ✨</h2>
+        <p class="text-lg opacity-80">Finding a fair pub meetup is as easy as 1-2-3!</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        <!-- Step 1 -->
+        <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="card-body items-center text-center">
+            <div class="bg-primary text-primary-content w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-4">
+              1
+            </div>
+            <h3 class="card-title">Create a Meet</h3>
+            <p>Start a new pub meet and share the invite link with your friends.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="card-body items-center text-center">
+            <div class="bg-secondary text-secondary-content w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-4">
+              2
+            </div>
+            <h3 class="card-title">Friends Join</h3>
+            <p>Everyone clicks the link and shares their location (GPS or postcode).</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="card-body items-center text-center">
+            <div class="bg-accent text-accent-content w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-4">
+              3
+            </div>
+            <h3 class="card-title">Meet Up!</h3>
+            <p>PubMeet finds the fairest pub and sends everyone the details via WhatsApp or SMS.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="mb-16">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-2">Why PubMeet is Awesome! 🎯</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="card bg-base-100 shadow-md">
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="text-2xl mr-2">⏱️</span>
+              Save Time
+            </h3>
+            <p>No more back-and-forth messages trying to decide where to meet</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-md">
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="text-2xl mr-2">🤝</span>
+              Fair For Everyone
+            </h3>
+            <p>Algorithmically finds the most convenient pub for all participants</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-md">
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="text-2xl mr-2">📱</span>
+              Easy To Share
+            </h3>
+            <p>Just send one link, no app downloads required</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-md">
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="text-2xl mr-2">🍺</span>
+              Pub Ratings
+            </h3>
+            <p>Includes ratings and reviews to find quality pubs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-8">What Our Users Say 💬</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Testimonial 1 -->
+        <div class="card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="mb-4">
+              <h3 class="font-bold">Jamie D.</h3>
+              <div class="rating rating-sm">
+                <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+              </div>
+            </div>
+            <p class="italic">"PubMeet ended our weekly pub debates! No more arguing about who has to travel furthest. Now we just let the app decide - it's genuinely made our nights out better!"</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="mb-4">
+              <h3 class="font-bold">Sarah L.</h3>
+              <div class="rating rating-sm">
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+              </div>
+            </div>
+            <p class="italic">"Our friend group is spread across the city, and PubMeet has discovered amazing pubs in the middle that none of us knew about! It's like having a local pub expert."</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="mb-4">
+              <h3 class="font-bold">Mark T.</h3>
+              <div class="rating rating-sm">
+                <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" checked />
+                <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" checked />
+              </div>
+            </div>
+            <p class="italic">"The WhatsApp integration is brilliant. One click and everyone gets the details - no excuses for being late anymore! 😂"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="card bg-gradient-to-r from-primary to-secondary text-primary-content shadow-2xl mb-8">
+      <div class="card-body text-center">
+        <h2 class="card-title text-3xl font-bold mx-auto mb-4">Ready to find your perfect pub? 🍻</h2>
+        <p class="mb-6">Create a PubMeet in seconds and share with your friends. It's completely free!</p>
+        <div class="card-actions justify-center">
+          <a href="/rooms/new" class="btn btn-lg glass text-xl gap-2">
+            🍻 Find a Pub Now
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
