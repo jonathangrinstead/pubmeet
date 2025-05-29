@@ -1,0 +1,77 @@
+<div class="flex justify-center items-center min-h-screen p-8">
+  <div class="relative w-full max-w-md mx-auto">
+  <h1 class="text-2xl font-bold mb-4 text-center">Create a PubMeet</h1>
+    <div class="card shadow-2xl bg-base-100 w-80">
+      <div class="card-body space-y-4">
+        <%= form_with model: @meet, url: meets_path, local: true do |f| %>
+
+          <!-- Decision Deadline -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">⏰ Decision Deadline</span>
+            </div>
+            <%= f.datetime_field :decision_deadline, class: "input input-bordered w-full" %>
+            <div class="label">
+              <span class="label-text-alt">When should we choose the pub?</span>
+            </div>
+          </label>
+
+          <!-- Custom Slug -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">🔗 Custom URL (optional)</span>
+            </div>
+            <%= f.text_field :slug, class: "input input-bordered w-full", placeholder: "leave blank for random code" %>
+            <div class="label">
+              <span class="label-text-alt">Use a custom link like /meet/london-beers</span>
+            </div>
+          </label>
+
+          <div class="divider">Your Details</div>
+
+          <!-- Participant Name -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">🙋 Your Name</span>
+            </div>
+            <%= text_field_tag "participant[name]", nil, class: "input input-bordered w-full", required: true %>
+          </label>
+
+          <!-- Location -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">📍 Your Location</span>
+            </div>
+            <%= text_field_tag "participant[location]", nil, class: "input input-bordered w-full", placeholder: "e.g. Camden" %>
+          </label>
+
+          <!-- Vibe -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">🎉 Preferred Vibe</span>
+            </div>
+            <%= select_tag "participant[vibe]",
+                  options_for_select(["Cheap and Cheerful", "Classy", "Sports", "Quiet", "Dance"]),
+                  prompt: "Select a vibe",
+                  class: "select select-bordered w-full" %>
+          </label>
+
+          <!-- Phone -->
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">📱 Phone Number (optional)</span>
+            </div>
+            <%= telephone_field_tag "participant[phone_number]", nil, class: "input input-bordered w-full" %>
+            <div class="label">
+              <span class="label-text-alt">We'll send the pub link by SMS</span>
+            </div>
+          </label>
+
+          <!-- Submit -->
+          <div class="form-control mt-6">
+            <%= f.submit "🍻 Create PubMeet", class: "btn btn-primary btn-block" %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>

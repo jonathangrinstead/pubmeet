@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">PubMeet: <%= @meet.slug %></h2>
+        </div>
+        <div class="card-body">
+          <% if notice %>
+            <div class="alert alert-success"><%= notice %></div>
+          <% end %>
+
+          <h4 class="mb-4">Meeting Details</h4>
+          <p><strong>Decision Deadline:</strong> <%= @meet.decision_deadline.strftime("%B %d, %Y at %I:%M %p") %></p>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">Participants</h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>Vibe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @meet.participants.each do |participant| %>
+                  <tr>
+                    <td><%= participant.name %></td>
+                    <td><%= participant.location %></td>
+                    <td><%= participant.vibe %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-4">
+            <a href="#" class="btn btn-primary">Yeh ill have a pint</a>
+            <a href="#" class="btn btn-outline-secondary">Share Link</a>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Share this link with your friends: <%= request.base_url %>/meets/<%= @meet.slug %></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

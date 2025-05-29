@@ -9,9 +9,9 @@
         <p class="text-xl mb-6">Find the fairest pub for everyone to meet at!</p>
         <p class="mb-6">No more arguments about where to meet. PubMeet finds the perfect pub based on everyone's location, so it's fair for the whole group!</p>
         <div class="card-actions justify-center">
-          <a href="/rooms/new" class="btn btn-primary btn-lg text-lg gap-2">
-            🍻 Find a Pub Now
-          </a>
+            <%= link_to new_meet_path, class: "btn btn-primary btn-lg text-lg gap-2" do %>
+              🍻 Find a Pub Now
+            <% end %>
         </div>
       </div>
     </section>
@@ -172,9 +172,9 @@
         <h2 class="card-title text-3xl font-bold mx-auto mb-4">Ready to find your perfect pub? 🍻</h2>
         <p class="mb-6">Create a PubMeet in seconds and share with your friends. It's completely free!</p>
         <div class="card-actions justify-center">
-          <a href="/rooms/new" class="btn btn-lg glass text-xl gap-2">
+          <%= link_to new_meet_path, class: "btn btn-lg glass text-xl gap-2" do %>
             🍻 Find a Pub Now
-          </a>
+          <% end %>
         </div>
       </div>
     </section>
