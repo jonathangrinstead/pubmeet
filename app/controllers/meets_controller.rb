@@ -12,6 +12,8 @@ class MeetsController < ApplicationController
   def create
     @meet = Meet.new(meet_params)
     @participant = Participant.new(participant_params)
+    @participant.meet = @meet 
+    
     if @meet.save && @participant.save
       redirect_to meet_path(@meet.slug), notice: 'Your PubMeet room is ready! 🍻'
     else

@@ -1,4 +1,6 @@
+require 'securerandom'
 class Meet < ApplicationRecord
+
   has_many :participants, dependent: :destroy
 
   before_create :generate_slug
@@ -6,13 +8,11 @@ class Meet < ApplicationRecord
   validates :decision_deadline, presence: true,
     comparison: { greater_than: -> { Time.current }, message: "must be in the future" }
 
-  validates :slug, uniqueness: true
+  validates :slug, uniqueness: true, allow_nil: true, allow_blank: true
 
   def generate_slug
-    self.slug = nil if self.slug.blank?
-    self.slug ||= loop do
-      token = SecureRandom.hex(5)
-      break token unless Meet.exists?(slug: token)
+    if slug.blank? || slug.empty?
+      self.slug = SecureRandom.hex(5)
     end
   end
 
