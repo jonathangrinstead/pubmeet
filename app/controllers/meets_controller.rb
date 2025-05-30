@@ -1,6 +1,7 @@
 class MeetsController < ApplicationController
 
   def show
+    @emoji = ['🍺', '🍻', '🍷', '🍸', '🍹', '🍾', '🍷', '🍸', '🍹', '🍾']
     @meet = Meet.find_by!(slug: params[:slug])
   end
 
