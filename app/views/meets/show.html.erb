@@ -1,50 +1,93 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-          <h2 class="mb-0">PubMeet: <%= @meet.slug %></h2>
+<div class="flex flex-col items-center justify-center min-h-screen bg-base-100 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl w-full mx-auto">
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+       <h2 class="card-title text-3xl font-bold text-center p-6 m-6 bg-gradient-to-r from-primary to-secondary text-primary-content rounded-lg">PubMeet: <%= @meet.slug %></h2>
+
+        <% if notice %>
+          <div class="alert alert-success shadow-lg mb-6">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span><%= notice %></span>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="text-center flexjustify-center mb-8" 
+             data-controller="countdown"
+             data-countdown-deadline-value="<%= @meet.decision_deadline.iso8601 %>">
+
+          <h3 class="text-xl font-bold mb-4">Pub will be chosen in</h3>
+          <div class="grid auto-cols-max grid-flow-col gap-5 text-center justify-center items-center">
+            <div class="flex flex-col">
+              <span class="countdown font-mono text-5xl">
+                <span data-countdown-target="days" style="--value:0;" aria-live="polite"></span>
+              </span>
+              days
+            </div>
+            <div class="flex flex-col">
+              <span class="countdown font-mono text-5xl">
+                <span data-countdown-target="hours" style="--value:0;" aria-live="polite"></span>
+              </span>
+              hours
+            </div>
+            <div class="flex flex-col">
+              <span class="countdown font-mono text-5xl">
+                <span data-countdown-target="minutes" style="--value:0;" aria-live="polite"></span>
+              </span>
+              min
+            </div>
+            <div class="flex flex-col">
+              <span class="countdown font-mono text-5xl">
+                <span data-countdown-target="seconds" style="--value:0;" aria-live="polite"></span>
+              </span>
+              sec
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <% if notice %>
-            <div class="alert alert-success"><%= notice %></div>
-          <% end %>
 
-          <h4 class="mb-4">Meeting Details</h4>
-          <p><strong>Decision Deadline:</strong> <%= @meet.decision_deadline.strftime("%B %d, %Y at %I:%M %p") %></p>
+        <div class="divider"></div>
 
-          <hr class="my-4">
-
-          <h4 class="mb-3">Participants</h4>
-          <div class="table-responsive">
-            <table class="table">
+        <div class="text-center mb-6">
+          <h3 class="text-xl font-bold mb-4">Pub People</h3>
+          <div class="overflow-x-auto">
+            <table class="table w-full table-zebra">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Location</th>
-                  <th>Vibe</th>
+                  <th class="text-center">Name</th>
                 </tr>
               </thead>
               <tbody>
                 <% @meet.participants.each do |participant| %>
                   <tr>
-                    <td><%= participant.name %></td>
-                    <td><%= participant.location %></td>
-                    <td><%= participant.vibe %></td>
+                    <td class="text-center"><%= participant.name %> <%= @emoji.sample %></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
           </div>
+        </div>
 
-          <div class="mt-4">
-            <a href="#" class="btn btn-primary">Yeh ill have a pint</a>
-            <a href="#" class="btn btn-outline-secondary">Share Link</a>
+        <div class="flex flex-col gap-4 justify-center items-center mt-4" data-controller="participant-form">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button data-participant-form-target='buttons' data-action="click->participant-form#showForm" class="btn btn-primary btn-lg gap-2 mb-4">
+              🍺 Yeh, I'll have a pint
+            </button>
+            <button data-participant-form-target='buttons' class="btn btn-ghost btn-lg gap-2 mb-4" onclick="navigator.clipboard.writeText('<%= request.base_url %>/meets/<%= @meet.slug %>').then(() => { this.textContent = '✅ Copied!' })">
+              📢 Share Link
+            </button>
+          </div>
+          <div data-participant-form-target='form' class="hidden w-full">
           </div>
         </div>
-        <div class="card-footer text-muted">
-          <small>Share this link with your friends: <%= request.base_url %>/meets/<%= @meet.slug %></small>
-        </div>
+      </div>
+
+      
+      <div class="card-footer bg-base-200 p-4 text-center">
+        <p class="text-sm opacity-70 mb-4">
+          Share this link with your friends: 
+          <span class="font-mono"><%= request.base_url %>/meets/<%= @meet.slug %></span>
+        </p>
       </div>
     </div>
   </div>
