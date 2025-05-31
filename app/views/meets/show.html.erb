@@ -73,7 +73,7 @@
             <button data-participant-form-target='buttons' data-action="click->participant-form#showForm" class="btn btn-primary btn-lg gap-2 mb-4">
               🍺 Yeh, I'll have a pint
             </button>
-            <button data-participant-form-target='buttons' class="btn btn-ghost btn-lg gap-2 mb-4" onclick="navigator.clipboard.writeText('<%= request.base_url %>/meets/<%= @meet.slug %>').then(() => { this.textContent = '✅ Copied!' })">
+            <button data-participant-form-target='buttons' class="btn btn-ghost btn-lg gap-2 mb-4" onclick="navigator.clipboard.writeText('🍻 <%= @meet.participants.first&.name || 'Someone' %> has invited you to join their pub meet! Join us at: <%= request.base_url %>/meets/<%= @meet.slug %>').then(() => { this.textContent = '✅ Copied!' })">
               📢 Share Link
             </button>
           </div>
