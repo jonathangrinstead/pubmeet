@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
-  resources :meets, param: :slug, only: [:new, :create, :show]
+  resources :meets, param: :slug, only: [:new, :create, :show] do
+    resources :participants, only: [:new, :create]
+  end
 end
