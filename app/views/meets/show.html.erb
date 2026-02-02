@@ -13,6 +13,23 @@
           </div>
         <% end %>
 
+        <div class="stats stats-vertical sm:stats-horizontal shadow mb-8 w-full">
+          <div class="stat">
+            <div class="stat-title">Participants</div>
+            <div class="stat-value"><%= @participants_count %></div>
+            <div class="stat-desc">Joined so far</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title">Top vibe</div>
+            <div class="stat-value">
+              <%= @top_vibe ? @top_vibe[0] : "—" %>
+            </div>
+            <div class="stat-desc">
+              <%= @top_vibe ? "#{@top_vibe[1]} vote#{@top_vibe[1] == 1 ? '' : 's'}" : "No votes yet" %>
+            </div>
+          </div>
+        </div>
+
         <div class="text-center flexjustify-center mb-8" 
              data-controller="countdown"
              data-countdown-deadline-value="<%= @meet.decision_deadline.iso8601 %>">
@@ -55,12 +72,14 @@
               <thead>
                 <tr>
                   <th class="text-center">Name</th>
+                  <th class="text-center">Vibe</th>
                 </tr>
               </thead>
               <tbody id="participants_list">
                 <% @meet.participants.each do |participant| %>
                   <tr>
                     <td class="text-center"><%= participant.name %> <%= @emoji.sample %></td>
+                    <td class="text-center"><%= participant.vibe.presence || "—" %></td>
                   </tr>
                 <% end %>
               </tbody>
