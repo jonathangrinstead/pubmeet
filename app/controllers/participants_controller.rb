@@ -10,12 +10,13 @@ class ParticipantsController < ApplicationController
     @participant.meet = @meet
     
     if @participant.save
-      render json: { 
+      render json: {
         name: @participant.name,
+        vibe: @participant.vibe,
         status: 'success'
       }, status: :ok, content_type: 'application/json'
     else
-      render json: { 
+      render json: {
         error: "Something went wrong",
         status: 'error'
       }, status: :unprocessable_entity, content_type: 'application/json'

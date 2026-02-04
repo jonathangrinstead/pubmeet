@@ -35,9 +35,22 @@ export default class extends Controller {
         </div>
         <div class="form-control w-full max-w-xs">
           <label class="label">
+            <span class="label-text">Preferred vibe?</span>
+          </label>
+          <select name="participant[vibe]" class="select select-bordered w-full max-w-xs">
+            <option value="">Select a vibe (optional)</option>
+            <option value="Cheap and Cheerful">Cheap and Cheerful</option>
+            <option value="Classy">Classy</option>
+            <option value="Sports">Sports</option>
+            <option value="Quiet">Quiet</option>
+            <option value="Dance">Dance</option>
+          </select>
+        </div>
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
             <span class="label-text">Phone Number?</span>
           </label>
-          <input type="text" name="participant[phone_number]" placeholder="Type here" class="input input-bordered w-full max-w-xs" required />
+          <input type="text" name="participant[phone_number]" placeholder="Optional" class="input input-bordered w-full max-w-xs" />
         </div>
         <div class="flex gap-4">
           <button type="submit" class="btn btn-primary">Join the pub meet</button>
@@ -65,13 +78,20 @@ export default class extends Controller {
       const data = await response.json()
 
       if (response.ok && data.status === 'success') {
-        // Add new participant to the list using getElementById
+        // Add new participant to the list without HTML injection
         const list = document.getElementById('participants_list')
-        list.insertAdjacentHTML('beforeend', `
-          <tr>
-            <td class="text-center">${data.name} ${this.getRandomEmoji()}</td>
-          </tr>
-        `)
+        const row = document.createElement('tr')
+        const nameCell = document.createElement('td')
+        nameCell.className = "text-center"
+        nameCell.textContent = `${data.name} ${this.getRandomEmoji()}`
+
+        const vibeCell = document.createElement('td')
+        vibeCell.className = "text-center"
+        vibeCell.textContent = data.vibe && data.vibe.length ? data.vibe : "—"
+
+        row.appendChild(nameCell)
+        row.appendChild(vibeCell)
+        list.appendChild(row)
         
         // Show success message
         this.formTarget.innerHTML = `

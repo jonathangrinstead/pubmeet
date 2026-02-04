@@ -3,6 +3,9 @@ class MeetsController < ApplicationController
   def show
     @emoji = ['🍺', '🍻', '🍷', '🍸', '🍹', '🍾', '🍷', '🍸', '🍹', '🍾']
     @meet = Meet.find_by!(slug: params[:slug])
+    @participants_count = @meet.participants.size
+    @vibe_counts = @meet.participants.where.not(vibe: [nil, ""]).group(:vibe).count
+    @top_vibe = @vibe_counts.max_by { |_, count| count }
   end
 
   def new
@@ -13,8 +16,8 @@ class MeetsController < ApplicationController
   def create
     @meet = Meet.new(meet_params)
     @participant = Participant.new(participant_params)
-    @participant.meet = @meet 
-    
+    @participant.meet = @meet
+
     if @meet.save && @participant.save
       redirect_to meet_path(@meet.slug), notice: 'Your PubMeet room is ready! 🍻'
     else
